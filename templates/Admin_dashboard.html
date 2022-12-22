@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/about-bg.jpg')}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Admin Panel</h1>
+                            <span class="subheading">You Can Modify Posts Here.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container">
+            <h2>Basic Operations</h2>
+            <a href="/edit/0"> <button class="btn btn-primary " >Add New Post</button></a>
+            <a href="/logout"><button  class="btn btn-primary " >Logout</button></a>
+            <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Content</th>
+                  <th>Date</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for post in posts %}
+                <tr>
+                  <td>{{post.id}}</td>
+                  <td>{{post.title}}</td>
+                  <td>{{post.content}}</td>
+                  <td>{{post.date}}</td>
+                  <td><a href="/edit/{{post.id}}"><button  class="btn btn-primary ">Edit</button></a></td>
+                  <td><a href="/delete/{{post.id}}"><button  class="btn btn-primary ">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endblock %}
