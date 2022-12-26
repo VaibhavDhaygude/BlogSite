@@ -34,7 +34,7 @@ class Posts(db.Model):
 
 
 @app.route("/")
-def hello():
+def home():
     posts=Posts.query.filter_by().all()
     return render_template("index.html",posts=posts)
 
